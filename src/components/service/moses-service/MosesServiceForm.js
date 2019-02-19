@@ -1,7 +1,7 @@
 import React from "react";
 import MosesOptionsForm from "./MosesOpts";
 import CrossValidationOptionsForm from "./CrossValOpts";
-import DatasetUpload from "./DatasetUpload";
+import DatasetUpload from "../standardComponents/DatasetUpload";
 import { stringifyMosesOptions } from "./utils";
 import TargetFeatureForm from "./TargetFeature";
 import {
@@ -64,7 +64,8 @@ export default class MosesServiceForm extends React.Component {
         mosesOptions: true,
         crossValOptions: true,
         targetFeatureAndFilters: true
-      }
+      },
+      fileAccept: ".csv, .xlsx, .xls,"
     };
 
     this.handleInputChange = this.handleInputChange.bind(this);
@@ -215,6 +216,7 @@ export default class MosesServiceForm extends React.Component {
             <DatasetUpload
               uploadedFile={this.state.datasetFile}
               handleFileUpload={this.handleFileUpload}
+              fileAccept={this.state.fileAccept}
               setValidationStatus={valid =>
                 this.setValidationStatus("dataset", valid)
               }
